@@ -1,0 +1,15 @@
+{
+  "short_name": "CoreUI-React",
+  "name": "CoreUI-React sample",
+  "icons": [
+    {
+      "src": "https://th.bing.com/th/id/OIG1.wEiQ5THKygtqn1KBn0W5?w=1024&h=1024&rs=1&pid=ImgDetMain",
+      "sizes": "100x100",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
