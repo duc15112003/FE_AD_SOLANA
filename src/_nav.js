@@ -22,7 +22,7 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Trang chủ',
-    to: 'dashboard',
+    to: '/dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
     badge: {
       color: 'info',
