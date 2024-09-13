@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   CButton,
@@ -15,8 +15,63 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
+import { AuthContext } from 'src/AuthContext'
+import LoginService from 'src/service/login'
 
 const Login = () => {
+  const { isLoggedIn, login } = useContext(AuthContext)
+
+  const [variable, setVariable] = useState({
+    username: '',
+    password: '',
+  })
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      setTimeout(() => {
+        window.location.href = '/dashboard'
+      }, 2000) // Chờ 2 giây trước khi chuyển hướng
+    }
+  }, [isLoggedIn])
+
+  const handleUsernameChange = (e) => {
+    const { value } = e.target
+
+    //Cái preState này là đại diện cho một đối tượng có giá trị cũ, còn cái ...preState là cái sao chép những thuộc tính của đối tượng cũ,
+    // cụ thể khi mình cập nhật thuộc tính username thì cái password nó là giá trị cũ được giữ nguyên, còn giá trị mới ở đây chính là username
+    setVariable((prevState) => ({
+      ...prevState,
+      username: value,
+    }))
+  }
+
+  //Hàm này để cập nhật giá trị password mỗi khi nhập
+  const handlePasswordChange = (e) => {
+    const { value } = e.target
+
+    //Cái preState này là đại diện cho một đối tượng có giá trị cũ, còn cái ...preState là cái sao chép những thuộc tính của đối tượng cũ,
+    // cụ thể khi mình cập nhật thuộc tính password thì cái username nó là giá trị cũ được giữ nguyên, còn giá trị mới ở đây chính là password
+    setVariable((prevState) => ({
+      ...prevState,
+      password: value,
+    }))
+  }
+
+  //Còn này là cái hàm login chính thức nè, nhân giá trị username và password từ biến mảng variable
+  const handleLogin = async (e) => {
+    e.preventDefault() // Ngăn chặn hành động mặc định của sự kiện
+    try {
+      // Gọi hàm login với đối tượng chứa thông tin đăng nhập
+      await LoginService.LoginProcess(variable.username, variable.password)
+      login()
+    } catch (error) {
+      setTimeout(() => {
+        alert('Tài khoản hoặc mật khẩu sai')
+      }, 2000) // Chờ 2 giây trước khi ẩn thông báo
+      console.error('Login failed:', error)
+    }
+  }
+
   return (
     <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -32,7 +87,11 @@ const Login = () => {
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="Username" autoComplete="username" />
+                      <CFormInput
+                        placeholder="Username"
+                        onChange={handleUsernameChange}
+                        autoComplete="username"
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
@@ -42,11 +101,12 @@ const Login = () => {
                         type="password"
                         placeholder="Password"
                         autoComplete="current-password"
+                        onChange={handlePasswordChange}
                       />
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
-                        <CButton color="primary" className="px-4">
+                        <CButton onClick={handleLogin} color="primary" className="px-4">
                           Login
                         </CButton>
                       </CCol>

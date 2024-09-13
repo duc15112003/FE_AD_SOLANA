@@ -5,9 +5,12 @@ import 'core-js'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import App from './App'
 import store from './store'
+import { AuthProvider } from 'src/AuthContext'
 
 createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <AuthProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </AuthProvider>,
 )

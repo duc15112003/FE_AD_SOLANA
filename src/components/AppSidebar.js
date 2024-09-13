@@ -31,12 +31,16 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarHeader className="border-bottom">
-        <img src="https://th.bing.com/th/id/OIG1.wEiQ5THKygtqn1KBn0W5?w=1024&h=1024&rs=1&pid=ImgDetMain"  width="60px" alt="" />
+        <img
+          src="https://th.bing.com/th/id/OIG1.wEiQ5THKygtqn1KBn0W5?w=1024&h=1024&rs=1&pid=ImgDetMain"
+          width="60px"
+          alt=""
+        />
         <b className="fs-5">FeedBackAdmin</b>
         <CCloseButton
           className="d-lg-none"
           dark
-          onClick={() => dispatch({ type: "set", sidebarShow: false })}
+          onClick={() => dispatch({ type: 'set', sidebarShow: false })}
         />
       </CSidebarHeader>
       <AppSidebarNav items={navigation} />
