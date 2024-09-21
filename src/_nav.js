@@ -44,23 +44,23 @@ const _nav = [
   {
     component: CNavGroup,
     name: 'Ý tưởng',
-    to: '/base',
+    to: '/admin',
     icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
-        name: 'Ý tưởng đã đăng',
-        to: '/base/accordion',
+        name: 'Toàn bộ ý tưởng',
+        to: '/admin/ideaAll',
       },
       {
         component: CNavItem,
-        name: 'Ý tưởng đã làm',
-        to: '/base/breadcrumbs',
+        name: 'Ý tưởng đã đóng',
+        to: '/admin/ideaDone',
       },
       {
         component: CNavItem,
-        name: 'Ý tưởng đã thanh toán',
-        to: '/base/cards',
+        name: 'Thêm ý tưởng',
+        to: '/admin/form',
       },
     ],
   },

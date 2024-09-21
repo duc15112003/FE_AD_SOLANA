@@ -1,14 +1,14 @@
 import React from 'react'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
-const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
-const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
+const StaffAll = React.lazy(() => import('./views/user/staff/Staff'))
+const CustomerAll = React.lazy(() => import('./views/user/customer/Customer'))
 
 // Base
-const Accordion = React.lazy(() => import('./views/base/accordion/Accordion'))
-const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumbs'))
-const Cards = React.lazy(() => import('./views/base/cards/Cards'))
-const Carousels = React.lazy(() => import('./views/base/carousels/Carousels'))
+const IdeaAll = React.lazy(() => import('./views/base/ideaAll/IdeaAll'))
+const IdeaDone = React.lazy(() => import('./views/base/ideaDone/IdeaDone'))
+const FormIdea = React.lazy(() => import('./views/base/ideaForm/IdeaForm'))
+const Profile = React.lazy(() => import('./views/user/staff/StaffProfile'))
 const Collapses = React.lazy(() => import('./views/base/collapses/Collapses'))
 const ListGroups = React.lazy(() => import('./views/base/list-groups/ListGroups'))
 const Navs = React.lazy(() => import('./views/base/navs/Navs'))
@@ -54,14 +54,12 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 const routes = [
   // { path: '/', exact: true, name: '' },
   { path: 'dashboard', name: 'Trang chủ', element: Dashboard },
-  { path: '/theme', name: 'Theme', element: Colors, exact: true },
-  { path: '/admin/employee', name: 'Nhân viên', element: Colors },
-  { path: '/admin/customer', name: 'Khách hàng', element: Typography },
-  { path: '/base', name: 'Base', element: Cards, exact: true },
-  { path: '/base/accordion', name: 'Accordion', element: Accordion },
-  { path: '/base/breadcrumbs', name: 'Breadcrumbs', element: Breadcrumbs },
-  { path: '/base/cards', name: 'Cards', element: Cards },
-  { path: '/base/carousels', name: 'Carousel', element: Carousels },
+  { path: '/admin/employee', name: 'Nhân viên', element: StaffAll },
+  { path: '/admin/customer', name: 'Khách hàng', element: CustomerAll },
+  { path: '/admin/ideaAll', name: 'Toàn bộ ý tưởng', element: IdeaAll },
+  { path: '/admin/IdeaDone', name: 'Ý tưởng hoàn tất khảo sát', element: IdeaDone },
+  { path: '/admin/form', name: 'Mẫu thêm ý tưởng khảo sát', element: FormIdea },
+  { path: '/admin/profile', name: 'Thông tin tài khoản', element: Profile },
   { path: '/base/collapses', name: 'Collapse', element: Collapses },
   { path: '/base/list-groups', name: 'List Groups', element: ListGroups },
   { path: '/base/navs', name: 'Navs', element: Navs },

@@ -1,96 +1,98 @@
-import React from 'react'
-import {
-  CAvatar,
-  CBadge,
-  CDropdown,
-  CDropdownDivider,
-  CDropdownHeader,
-  CDropdownItem,
-  CDropdownMenu,
-  CDropdownToggle,
-} from '@coreui/react'
-import {
-  cilBell,
-  cilCreditCard,
-  cilCommentSquare,
-  cilEnvelopeOpen,
-  cilFile,
-  cilLockLocked,
-  cilSettings,
-  cilTask,
-  cilUser,
-} from '@coreui/icons'
-import CIcon from '@coreui/icons-react'
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-import avatar8 from './../../assets/images/avatars/8.jpg'
 
 const AppHeaderDropdown = () => {
+  const us = localStorage.getItem("us")
   return (
-    <CDropdown variant="nav-item">
-      <CDropdownToggle placement="bottom-end" className="py-0 pe-0" caret={false}>
-        <CAvatar src={avatar8} size="md" />
-      </CDropdownToggle>
-      <CDropdownMenu className="pt-0" placement="bottom-end">
-        <CDropdownHeader className="bg-body-secondary fw-semibold mb-2">Tài Khoản</CDropdownHeader>
-        <CDropdownItem href="">
-          <CIcon icon={cilBell} className="me-2" />
-          Cập Nhật
-          <CBadge color="info" className="ms-2">
-            42
-          </CBadge>
-        </CDropdownItem>
-        <CDropdownItem href="">
-          <CIcon icon={cilEnvelopeOpen} className="me-2" />
-          Messages
-          <CBadge color="success" className="ms-2">
-            42
-          </CBadge>
-        </CDropdownItem>
-        <CDropdownItem href="">
-          <CIcon icon={cilTask} className="me-2" />
-          Tasks
-          <CBadge color="danger" className="ms-2">
-            42
-          </CBadge>
-        </CDropdownItem>
-        <CDropdownItem href="#">
-          <CIcon icon={cilCommentSquare} className="me-2" />
-          Comments
-          <CBadge color="warning" className="ms-2">
-            42
-          </CBadge>
-        </CDropdownItem>
-        <CDropdownHeader className="bg-body-secondary fw-semibold my-2">Settings</CDropdownHeader>
-        <CDropdownItem href="#">
-          <CIcon icon={cilUser} className="me-2" />
-          Profile
-        </CDropdownItem>
-        <CDropdownItem href="#">
-          <CIcon icon={cilSettings} className="me-2" />
-          Settings
-        </CDropdownItem>
-        <CDropdownItem href="#">
-          <CIcon icon={cilCreditCard} className="me-2" />
-          Payments
-          <CBadge color="secondary" className="ms-2">
-            42
-          </CBadge>
-        </CDropdownItem>
-        <CDropdownItem href="#">
-          <CIcon icon={cilFile} className="me-2" />
-          Projects
-          <CBadge color="primary" className="ms-2">
-            42
-          </CBadge>
-        </CDropdownItem>
-        <CDropdownDivider />
-        <CDropdownItem href="#">
-          <CIcon icon={cilLockLocked} className="me-2" />
-          Lock Account
-        </CDropdownItem>
-      </CDropdownMenu>
-    </CDropdown>
-  )
-}
+    <div className="dropdown">
+     <button
+      className="btn btn-secondary dropdown-toggle d-flex align-items-center p-2"
+      type="button"
+      id="dropdownMenuButton"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      style={{ fontSize: '12px', height: '40px' }}  // Điều chỉnh chiều cao và cỡ chữ
+    >
+      <img src="/path-to-your-avatar.jpg" alt="avatar" className="rounded-circle me-2" width="20" height="20" /> {/* Điều chỉnh kích thước ảnh */}
+      <p className="mb-0" style={{ fontSize: '12px' }}>{us}</p>  {/* Điều chỉnh cỡ chữ */}
+    </button>
 
-export default AppHeaderDropdown
+     
+      <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+        <li>
+          <h6 className="dropdown-header bg-body-secondary fw-semibold mb-2">Tài Khoản</h6>
+        </li>
+        <li>
+          <a className="dropdown-item" href="#">
+            <i className="bi bi-bell me-2"></i>
+            Cập Nhật
+            <span className="badge bg-info ms-2">42</span>
+          </a>
+        </li>
+        <li>
+          <a className="dropdown-item" href="#">
+            <i className="bi bi-envelope-open me-2"></i>
+            Messages
+            <span className="badge bg-success ms-2">42</span>
+          </a>
+        </li>
+        <li>
+          <a className="dropdown-item" href="#">
+            <i className="bi bi-check2-square me-2"></i>
+            Tasks
+            <span className="badge bg-danger ms-2">42</span>
+          </a>
+        </li>
+        <li>
+          <a className="dropdown-item" href="#">
+            <i className="bi bi-chat me-2"></i>
+            Comments
+            <span className="badge bg-warning ms-2">42</span>
+          </a>
+        </li>
+        <li>
+          <h6 className="dropdown-header bg-body-secondary fw-semibold my-2">Settings</h6>
+        </li>
+        <li>
+          <a className="dropdown-item" href="admin/profile">
+            <i className="bi bi-person me-2"></i>
+            Profile
+          </a>
+        </li>
+        <li>
+          <a className="dropdown-item" href="#">
+            <i className="bi bi-gear me-2"></i>
+            Settings
+          </a>
+        </li>
+        <li>
+          <a className="dropdown-item" href="#">
+            <i className="bi bi-credit-card me-2"></i>
+            Payments
+            <span className="badge bg-secondary ms-2">42</span>
+          </a>
+        </li>
+        <li>
+          <a className="dropdown-item" href="#">
+            <i className="bi bi-file-earmark me-2"></i>
+            Projects
+            <span className="badge bg-primary ms-2">42</span>
+          </a>
+        </li>
+        <li>
+          <hr className="dropdown-divider" />
+        </li>
+        <li>
+          <a className="dropdown-item" href="#">
+            <i className="bi bi-lock me-2"></i>
+            Lock Account
+          </a>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+export default AppHeaderDropdown;

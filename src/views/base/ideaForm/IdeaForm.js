@@ -1,22 +1,34 @@
 import React from 'react'
 import {
-  CBreadcrumb,
-  CBreadcrumbItem,
+  CButton,
   CCard,
   CCardBody,
+  CCardFooter,
+  CCardGroup,
   CCardHeader,
+  CCardImage,
+  CCardLink,
+  CCardSubtitle,
+  CCardText,
+  CCardTitle,
+  CListGroup,
+  CListGroupItem,
+  CNav,
+  CNavItem,
+  CNavLink,
   CCol,
   CRow,
-  CLink,
 } from '@coreui/react'
 import { DocsExample, DocsLink } from 'src/components'
 
-const Breadcrumbs = () => {
+import ReactImg from 'src/assets/images/react.jpg'
+
+const IdeaForm = () => {
   return (
     <>
       <CCard className="mb-4">
         <CCardHeader>
-          Danh sách ý tưởng đã làm
+          Danh sách ý tưởng đã thanh toán
           <DocsLink href="https://coreui.io/docs/utilities/colors/" />
         </CCardHeader>
         <CCardBody>
@@ -65,4 +77,4 @@ const Breadcrumbs = () => {
   )
 }
 
-export default Breadcrumbs
+export default IdeaForm

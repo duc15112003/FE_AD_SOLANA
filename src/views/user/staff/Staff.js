@@ -1,6 +1,6 @@
 import React, { useEffect, useState, createRef } from 'react';
 import axios from 'axios';
-const Colors = () => {
+const Staff = () => {
   const [staff, setStaff] = useState([]);
 
   const fetchData = async () => {
@@ -46,7 +46,9 @@ const Colors = () => {
                 <th scope="col">Last name</th>
                 <th scope="col">Phone number</th>
                 <th scope="col">Birthday</th>
-                <th scope="col">Public key</th>
+                <th scope="col">Email</th>
+                <th scope="col">Positon</th>
+                <th scope="col">Salary</th>
                 <th scope="col">Control</th>
               </tr>
               </thead>
@@ -58,7 +60,9 @@ const Colors = () => {
                   <td>{member.lastname}</td>
                   <td>{member.phoneNumber}</td>
                   <td>{member.birthday}</td>
-                  <td>{member.publicKey}</td>
+                  <td>{member.email}</td>
+                  <td>{member.position}</td>
+                  <td>{member.salary}</td>
                   <td>
                     <button className="btn btn-primary me-2">
                       <i className="bi bi-pencil-square"></i>
@@ -78,4 +82,4 @@ const Colors = () => {
   );
 };
 
-export default Colors;
+export default Staff;
