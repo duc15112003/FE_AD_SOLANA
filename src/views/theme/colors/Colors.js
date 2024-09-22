@@ -4,16 +4,22 @@ import classNames from 'classnames'
 import { CRow, CCol, CCard, CCardHeader, CCardBody } from '@coreui/react'
 import { rgbToHex } from '@coreui/utils'
 import { DocsLink } from 'src/components'
+import adminService from '../../../service/admin'
 
 const ThemeView = () => {
   const [color, setColor] = useState('rgb(255, 255, 255)')
   const ref = createRef()
+  const [listAdmin, setListAdmin] = useState([])
 
   useEffect(() => {
     const el = ref.current.parentNode.firstChild
     const varColor = window.getComputedStyle(el).getPropertyValue('background-color')
     setColor(varColor)
   }, [ref])
+
+  setListAdmin(adminService.getAllAdmins)
+
+
 
   return (
     <table className="table w-100" ref={ref}>
