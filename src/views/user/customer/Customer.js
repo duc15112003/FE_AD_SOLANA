@@ -3,7 +3,7 @@ import { CCard, CCardHeader, CCardBody, CRow } from '@coreui/react'
 import { DocsLink } from 'src/components'
 import axios from 'axios'
 
-const Typography = () => {
+const Customer = () => {
   const [customers, setCustomers] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const [totalPages, setTotalPages] = useState(0)
@@ -82,7 +82,6 @@ const Typography = () => {
                 <th scope="col">Last name</th>
                 <th scope="col">Phone number</th>
                 <th scope="col">Birthday</th>
-                <th scope="col">Public key</th>
                 <th scope="col">Control</th>
               </tr>
               </thead>
@@ -90,11 +89,10 @@ const Typography = () => {
               {customers.map((customer, index) => (
                 <tr key={index}>
                   <th scope="row">{customer.id}</th>
-                  <td>{customer.firstName}</td>
-                  <td>{customer.lastName}</td>
+                  <td>{customer.firstname}</td>
+                  <td>{customer.lastname}</td>
                   <td>{customer.phoneNumber}</td>
                   <td>{customer.birthday}</td>
-                  <td>{customer.publicKey}</td>
                   <td>
                     <button className={'btn btn-primary me-2'}>
                       <i className="bi bi-pencil-square"></i>
@@ -134,4 +132,4 @@ const Typography = () => {
   )
 }
 
-export default Typography
+export default Customer
