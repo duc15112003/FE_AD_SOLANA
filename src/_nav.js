@@ -30,18 +30,6 @@ const _nav = [
     },
   },
   {
-    component: CNavItem,
-    name: 'Nhân viên',
-    to: '/admin/employee',
-    icon: <CIcon icon={cilAddressBook} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
-    name: 'Khách hàng',
-    to: '/admin/customer',
-    icon: <CIcon icon={cilGroup} customClassName="nav-icon" />,
-  },
-  {
     component: CNavGroup,
     name: 'Ý tưởng',
     to: '/admin',
@@ -70,12 +58,60 @@ const _nav = [
     to: '/theme/typography',
     icon: <CIcon icon={cilWallet} customClassName="nav-icon" />,
   },
-  {
+]
+
+const role = localStorage.getItem('role');
+
+if (role && role.split(',').includes('ROLE_ADMIN_USER')) {
+  _nav.splice(1, 0, {
+    component: CNavItem,
+    name: 'Khách hàng',
+    to: '/admin/customer',
+    icon: <CIcon icon={cilGroup} customClassName="nav-icon" />,
+  });
+}
+
+if (role && role.split(',').includes('ROLE_ADMIN_STAFF')) {
+  _nav.splice(1, 0, { // Thêm "Nhân viên" vào vị trí thứ 1
+    component: CNavItem,
+    name: 'Nhân viên',
+    to: '/admin/employee',
+    icon: <CIcon icon={cilAddressBook} customClassName="nav-icon" />,
+  });
+}
+
+if (role && role.split(',').includes('ROLE_ADMIN_STATISTIC')) {
+  _nav.push({
     component: CNavItem,
     name: 'Thống kê',
     to: '/admin/chart',
     icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
+  });
+}
+
+if (role && role.split(',').includes('ROLE_ADMIN')) {
+  _nav.splice(1, 0, {
+    component: CNavItem,
+    name: 'Nhân viên',
+    to: '/admin/employee',
+    icon: <CIcon icon={cilAddressBook} customClassName="nav-icon" />,
   },
-]
+  {
+    component: CNavItem,
+    name: 'Khách hàng',
+    to: '/admin/customer',
+    icon: <CIcon icon={cilGroup} customClassName="nav-icon" />,
+  }
+);
+
+
+  _nav.push({
+    component: CNavItem,
+    name: 'Thống kê',
+    to: '/admin/chart',
+    icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
+  });
+}
+
 
 export default _nav

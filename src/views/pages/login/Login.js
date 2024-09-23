@@ -27,7 +27,11 @@ const Login = () => {
   const login_when_click = () => {
       const roles = localStorage.getItem('role');
       const rolesArray = roles.split(',');
-      const hasAdmin = rolesArray.some(role => role === 'ROLE_ADMIN');
+      const hasAdmin = rolesArray.some(role => 
+        role === 'ROLE_ADMIN' || 
+        role === 'ROLE_ADMIN_STAFF' || 
+        role === 'ROLE_ADMIN_EMPLOYEE'
+      );
         if(hasAdmin){
           setTimeout(() => {
             window.location.href = '/dashboard'
