@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
+import { useContext } from 'react'
 import {
   CCloseButton,
   CSidebar,
@@ -10,11 +10,13 @@ import {
   CSidebarToggler,
 } from '@coreui/react'
 import { AppSidebarNav } from './AppSidebarNav'
+import { AuthContext } from 'src/AuthContext'
 
 // sidebar nav config
 import navigation from '../_nav'
 
 const AppSidebar = () => {
+  const { logout } = useContext(AuthContext)
   const dispatch = useDispatch()
   const unfoldable = useSelector((state) => state.sidebarUnfoldable)
   const sidebarShow = useSelector((state) => state.sidebarShow)
@@ -46,7 +48,7 @@ const AppSidebar = () => {
       <AppSidebarNav items={navigation} />
       <CSidebarFooter className="border-top d-none d-lg-flex">
         <CSidebarToggler
-          onClick={() => dispatch({ type: 'set', sidebarUnfoldable: !unfoldable })}
+          onClick={logout}
         />
       </CSidebarFooter>
     </CSidebar>
