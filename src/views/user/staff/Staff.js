@@ -24,6 +24,7 @@ const Staff = () => {
           <a href="https://coreui.io/docs/utilities/colors/" className="ms-2">
             DocsLink
           </a>
+          <a className='button' href='/admin/addStaff'>Add</a>
         </div>
         <div className="card-body">
           <div className="row">
