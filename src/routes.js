@@ -1,4 +1,5 @@
 import React from 'react'
+import AddStaffForm from './views/user/staff/AddStaff'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const StaffAll = React.lazy(() => import('./views/user/staff/Staff'))
@@ -95,6 +96,7 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', element: Modals },
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
+  { path: 'admin/addStaff', name: 'Thêm Nhân Viên', element: AddStaffForm },
 ]
 
 export default routes
