@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from 'axios';
+import { jwtDecode } from "jwt-decode";
 
 const API_BASE_URL = 'http://localhost:8080/api/auth'
 
@@ -20,7 +21,8 @@ const LoginProcess = async (username, password) => {
 
     localStorage.setItem('token', response.data.accessToken)
     localStorage.setItem('us', username)
-
+    const decordToken = jwtDecode(response.data.accessToken)
+    localStorage.setItem('role', decordToken.roles)
     return 'oke'
   } catch (error) {
     if (error.response) {

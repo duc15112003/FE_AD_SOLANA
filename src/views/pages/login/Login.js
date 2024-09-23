@@ -15,24 +15,27 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
-import { AuthContext } from 'src/AuthContext'
+// import { AuthContext } from 'src/AuthContext'
 import LoginService from 'src/service/login'
 
 const Login = () => {
-  const { isLoggedIn, login } = useContext(AuthContext)
-
   const [variable, setVariable] = useState({
     username: '',
     password: '',
   })
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      setTimeout(() => {
-        window.location.href = '/dashboard'
-      }, 2000) // Chờ 2 giây trước khi chuyển hướng
+  const login_when_click = () => {
+      const roles = localStorage.getItem('role');
+      const rolesArray = roles.split(',');
+      const hasAdmin = rolesArray.some(role => role === 'ROLE_ADMIN');
+        if(hasAdmin){
+          setTimeout(() => {
+            window.location.href = '/dashboard'
+          }, 2000) // Chờ 2 giây trước khi chuyển hướng
+        }else{
+          alert("Tài khoản này không có quyền đăng nhập!");
+        }
     }
-  }, [isLoggedIn])
 
   const handleUsernameChange = (e) => {
     const { value } = e.target
@@ -63,7 +66,7 @@ const Login = () => {
     try {
       // Gọi hàm login với đối tượng chứa thông tin đăng nhập
       await LoginService.LoginProcess(variable.username, variable.password)
-      login()
+      login_when_click();
     } catch (error) {
       setTimeout(() => {
         alert('Tài khoản hoặc mật khẩu sai')

@@ -6,19 +6,19 @@ const AuthContext = createContext()
 // Tạo một Provider cho Context
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    const savedIsLoggedIn = localStorage.getItem('isLoggedIn')
-    return savedIsLoggedIn === 'true' || false
-  })
+  // const [isLoggedIn, setIsLoggedIn] = useState(() => {
+  //   const savedIsLoggedIn = localStorage.getItem('isLoggedIn')
+  //   return savedIsLoggedIn === 'true' || false
+  // })
 
-  const login = () => {
-    setIsLoggedIn(true)
-    localStorage.setItem('isLoggedIn', 'true')
-  }
+  // const login = () => {
+  //   setIsLoggedIn(true)
+  //   localStorage.setItem('isLoggedIn', 'true')
+  // }
 
   const logout = () => {
-    setIsLoggedIn(false)
-    localStorage.setItem('isLoggedIn', 'false')
+    // setIsLoggedIn(false)
+    // localStorage.setItem('isLoggedIn', 'false')
     sessionStorage.clear()
     localStorage.clear()
     window.location.href = '/login'
@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{logout}}>{children}</AuthContext.Provider>
   )
 }
 
